@@ -1,6 +1,5 @@
-# "lowvalues"
+# Last character in a file
 END_MARK = "\0"
-
 
 def cargo_to_s(cargo)
   case cargo
@@ -18,6 +17,8 @@ def cargo_to_s(cargo)
 end
 
 class Character
+  attr_reader :cargo
+
   def initialize(cargo, line_index, col_index, source_index, source_text)
     # cargo = the character
     @cargo = cargo
@@ -27,7 +28,6 @@ class Character
     @source_text = source_text
   end
 
-  # String representation
   def to_s
     sprintf("%6d%4d%10s", @line_index, @col_index, cargo_to_s(@cargo))
   end
