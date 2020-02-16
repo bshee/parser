@@ -17,7 +17,7 @@ def cargo_to_s(cargo)
 end
 
 class Character
-  attr_reader :cargo
+  attr_reader :cargo, :line_index, :col_index, :source_text
 
   def initialize(cargo, line_index, col_index, source_index, source_text)
     # cargo = the character
