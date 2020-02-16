@@ -29,6 +29,8 @@ class Character
   end
 
   def to_s
-    sprintf("%6d%4d%11s", @line_index, @col_index, cargo_to_s(@cargo))
+    sprintf("%6<line_index>d%<col_index>4d%11<cargo>s",
+            line_index: @line_index, col_index: @col_index,
+            cargo: cargo_to_s(@cargo))
   end
 end

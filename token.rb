@@ -1,0 +1,2 @@
+class LexerError < StandardError
+end

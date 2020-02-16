@@ -16,18 +16,18 @@ class Scanner
 
     # Maintain line count.
     prev_char = @source_text[@source_index - 1]
-    if @source_index > 0 and prev_char == "\n"
+    if @source_index.positive? && prev_char == "\n"
       @line_index += 1
       @col_index = -1
     end
 
     @col_index += 1
-    if @source_index > @last_index
-      # Read past the end of source text.
-      char = END_MARK
-    else
-      char = @source_text[@source_index]
-    end
+    char = if @source_index > @last_index
+             # Read past the end of source text.
+             END_MARK
+           else
+             @source_text[@source_index]
+           end
     Character.new(char, @line_index, @col_index, @source_index, @source_text)
   end
 end
