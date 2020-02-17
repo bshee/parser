@@ -4,14 +4,16 @@ class LexerError < StandardError
 end
 
 class Token
-  def initialize(start_char)
+  attr_accessor :cargo
+
+  def initialize(start_char, type = nil)
     @cargo = start_char.cargo
 
     @source_text = start_char.source_text
     @line_index = start_char.line_index
     @col_index = start_char.col_index
 
-    @type = nil
+    @type = type
   end
 
   # Return a string representation of the Token.
@@ -41,5 +43,10 @@ class Token
       sprintf("%<string>s%#<type>s:#{space}#{@cargo}",
               string: start, type: @type.ljust(token_type_length, "."))
     end
+  end
+
+  def abort(message)
+    throw LexerError, "In line #{@line_index} near column #{@col_index}: "\
+      + message
   end
 end

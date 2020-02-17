@@ -48,6 +48,9 @@ STRING_STARTCHARS = "'" + '"'
 
 WHITESPACE_CHARS  = " \t\n"
 
+COMMENT_START_CHARS = "/*"
+COMMENT_END_CHARS = "*/"
+
 # Token types
 STRING = "String"
 IDENTIFIER = "Identifier"

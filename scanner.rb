@@ -30,4 +30,14 @@ class Scanner
            end
     Character.new(char, @line_index, @col_index, @source_index, @source_text)
   end
+
+  def lookahead(offset)
+    # Return a string containing the character at the position.
+    index = @source_index + offset
+    if index > @last_index
+      END_MARK
+    else
+      @source_text[index]
+    end
+  end
 end
